@@ -36,26 +36,31 @@ The goals / steps of this project are the following:
 
 Here is a link to my [project code](https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
 
-You're reading it! and here is a link to my [project code](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
-
 ###Data Set Summary & Exploration
 
-####1. Provide a basic summary of the data set. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
+####1. Basic summary of the data set
 
-I used the pandas library to calculate summary statistics of the traffic
-signs data set:
+I used the Python and Numpy to calculate summary statistics of the traffic signs data set:
 
-* The size of training set is ?
-* The size of the validation set is ?
-* The size of test set is ?
-* The shape of a traffic sign image is ?
-* The number of unique classes/labels in the data set is ?
+Number of training examples = 34799
+Number of validation examples = 4410
+Number of testing examples = 12630
+Shape of traffic sign image = (32, 32, 3)
+Number of unique classes/labels = 43
 
 ####2. Include an exploratory visualization of the dataset.
 
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
+Below is an explaratory visualization of the data set. It is 3 histograms showing the total image count for each class (training, validation, and test are included):
 
+Training Histogram
 ![alt text][image1]
+
+Vaidation Histogram
+![alt text][image1]
+
+Test Histogram
+![alt text][image1]
+
 
 ###Design and Test a Model Architecture
 

@@ -52,15 +52,15 @@ Number of unique classes/labels = 43
 
 Below is an explaratory visualization of the data set. First, 5 random images of the data set:
 
-![alt text][https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/1.png]
+![alt text][https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/1.png "1"]
 
-![alt text][https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/22.png]
+![alt text][https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/22.png "22"]
 
-![alt text][https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/25.png]
+![alt text][https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/25.png "25"] 
 
-![alt text][https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/28.png]
+![alt text][https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/28.png "28"]
 
-![alt text][https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/8.png]
+![alt text][https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/8.png "8"]
 
 The following includes 3 histograms showing the total image count for each class (training, validation, and test histograms are included):
 
@@ -83,24 +83,13 @@ I first converted the images to grayscale for simplicity and data reduction. Sim
 
 I then normalized the image data, so that the inputs were all within a comparable range. I believe Stanford's CS231n sums up data pre-processing techniques very well. Check it out [here](https://cs231n.github.io/neural-networks-2/#datapre).
 
-As a first step, I decided to convert the images to grayscale because ...
+Check out the before and after of my pre-processing below:
 
-Here is an example of a traffic sign image before and after grayscaling.
+Original
+![alt text][https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/Original.png]
 
-![alt text][image2]
-
-As a last step, I normalized the image data because ...
-
-I decided to generate additional data because ... 
-
-To add more data to the the data set, I used the following techniques because ... 
-
-Here is an example of an original image and an augmented image:
-
-![alt text][image3]
-
-The difference between the original data set and the augmented data set is the following ... 
-
+Normalized + Grayscale
+![alt text][https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/NormalizedandGray.png]
 
 ####2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 

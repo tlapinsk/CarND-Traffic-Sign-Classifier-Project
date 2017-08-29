@@ -64,14 +64,13 @@ Below is an explaratory visualization of the data set. First, 5 random images of
 
 The following includes 3 histograms showing the total image count for each class (training, validation, and test histograms are included):
 
-Training Histogram
-
+Training Histogram 
 ![alt text](https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/Training.png?raw=true "Training Histogram")
 
-Validation Histogram
+Validation Histogram 
 ![alt text](https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/Validation.png?raw=true "Validation Histogram")
 
-Test Histogram
+Test Histogram 
 ![alt text](https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/Test.png?raw=true "Test Histogram")
 
 
@@ -85,10 +84,10 @@ I then normalized the image data, so that the inputs were all within a comparabl
 
 Check out the before and after of my pre-processing below:
 
-Original
+Original 
 ![alt text](https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/Original.png "Original")
 
-Normalized + Grayscale
+Normalized + Grayscale 
 ![alt text](https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/NormalizedandGray.png "Normalized + Grayscale")
 
 ####2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.

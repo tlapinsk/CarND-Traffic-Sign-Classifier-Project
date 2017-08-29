@@ -162,10 +162,13 @@ The accuracy for each set above indicate that the model is working fairly well -
 
 Here are five German traffic signs that I found on the web:
 
-![alt text](image4) ![alt text](image4) ![alt text](image4)
-![alt text](image4) ![alt text](image4)
+![alt text](https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/web1.png "Web Pic #1") 
+![alt text](https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/web2.png "Web Pic #2") 
+![alt text](https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/web3.png "Web Pic #3")
+![alt text](https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/web4.png "Web Pic #4") 
+![alt text](https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/web5.png "Web Pic #5")
 
-The first image might be difficult to classify because ...
+I believe these pictures will actually be fairly easy to classify since they take up the majority of each picture and are fairly square images.
 
 ####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
@@ -173,33 +176,66 @@ Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+| Right-of-way at the next intersection      		| #11 Right-of-way at the next intersection  									| 
+| Speed limit (60km/h)     			| #3 Speed limit (60km/h)										|
+| Speed limit (30km/h)					| #1 Speed limit (30km/h)										|
+| Stop	      		| #14 Stop				 				|
+| Road work		| #25 Road work     							|
 
+The model was able to correctly guess 5 out of 5 traffic signs, which gives an accuracy of 100%. This compares similarly to the accuracy of the training, validation, and test sets (100%, 96.3%, and 92.8% respectively)
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability.
 
-####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
-
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
-
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
+For the first image, the model is 100% sure that it is a right-of-way at the next intersection sign, and the image does contain this sign. The top fix soft max probabilities were:
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+| 1         			| Right-of-way at the next intersection  									| 
+| 7.85e-26     				| Pedestrians 										|
+| 1.78e-29					| Priority road									|
+| 1.18e-29	      			| Roundabout mandatory				 				|
+| 5.07e-30				    | Double curve      							|
 
+For the second image, the model is 100% sure that it is a speed limit (60km/h) sign, and the image does contain this sign. The top fix soft max probabilities were:
 
-For the second image ... 
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 1         			| Speed limit (60km/h) 									| 
+| 2.95e-13     				| Speed limit (50km/h)										|
+| 1.33e-16					| Slippery road									|
+| 4.18e-20	      			| Speed limit (80km/h)				 				|
+| 1.51e-22				    | End of speed limit (80km/h)      							|
 
-### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
-####1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
+For the third image, the model is 100% sure that it is a speed limit (30km/h) sign, and the image does contain this sign. The top fix soft max probabilities were:
 
+Softmax prob 3: [  9.99989629e-01   1.03944130e-05   4.03480770e-17   3.54319326e-20
+   1.49643275e-24]
+Prediction 3: [ 1  2  3  5 14]
 
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 9.99e-1         			| Speed limit (30km/h)	 									| 
+| 1.04e-05     				| Speed limit (50km/h)										|
+| 4.03e-17					| Speed limit (60km/h)								|
+| 3.54e-20	      			| Speed limit (80km/h)				 				|
+| 1.50e-24				    | Stop      							|
+
+For the fourth image, the model is 100% sure that it is a stop sign, and the image does contain this sign. The top fix soft max probabilities were:
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 1         			| Stop 									| 
+| 4.62e-05     				| Speed limit (80km/h) 										|
+| 1.96e-07					| No passing for vehicles over 3.5 metric tons									|
+| 3.68e-08	      			| Turn left ahead				 				|
+| 3.57e-08				    | Speed limit (50km/h)      							|
+
+For the fifth image, the model is 100% sure that it is a road work sign, and the image does contain this sign. The top fix soft max probabilities were:
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 1         			| Road work  									| 
+| 2.89e-21     				| Right-of-way at the next intersection 										|
+| 8.51e-22					| Beware of ice/snow									|
+| 6.75e-29	      			| Yield				 				|
+| 6.69e-29				    | Turn left ahead      							|

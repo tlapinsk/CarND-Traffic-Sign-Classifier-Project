@@ -50,7 +50,19 @@ Number of unique classes/labels = 43
 
 ####2. Include an exploratory visualization of the dataset.
 
-Below is an explaratory visualization of the data set. It is 3 histograms showing the total image count for each class (training, validation, and test histograms are included):
+Below is an explaratory visualization of the data set. First, 5 random images of the data set:
+
+![alt text][https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/1.png]
+
+![alt text][https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/22.png]
+
+![alt text][https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/25.png]
+
+![alt text][https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/28.png]
+
+![alt text][https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/8.png]
+
+The following includes 3 histograms showing the total image count for each class (training, validation, and test histograms are included):
 
 Training Histogram
 
@@ -66,6 +78,10 @@ Test Histogram
 ###Design and Test a Model Architecture
 
 ####1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
+
+I first converted the images to grayscale for simplicity and data reduction. Simplicity because there is only one color channel, which thus translates to data reduction as well. Grayscale allows the neural network to only process 1/3 the amount of data compared to RBG.
+
+I then normalized the image data, so that the inputs were all within a comparable range. I believe Stanford's CS231n sums up data pre-processing techniques very well. Check it out [here](https://cs231n.github.io/neural-networks-2/#datapre).
 
 As a first step, I decided to convert the images to grayscale because ...
 

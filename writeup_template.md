@@ -64,13 +64,16 @@ Below is an explaratory visualization of the data set. First, 5 random images of
 
 The following includes 3 histograms showing the total image count for each class (training, validation, and test histograms are included):
 
-Training Histogram 
+Training Histogram
+
 ![alt text](https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/Training.png?raw=true "Training Histogram")
 
-Validation Histogram 
+Validation Histogram
+
 ![alt text](https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/Validation.png?raw=true "Validation Histogram")
 
-Test Histogram 
+Test Histogram
+
 ![alt text](https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/Test.png?raw=true "Test Histogram")
 
 
@@ -80,14 +83,18 @@ Test Histogram
 
 I first converted the images to grayscale for simplicity and data reduction. Simplicity because there is only one color channel, which thus translates to data reduction as well. Grayscale allows the neural network to only process 1/3 the amount of data compared to RBG.
 
+[This stackoverflow](https://stackoverflow.com/questions/20473352/is-conversion-to-gray-scale-a-necessary-step-in-image-preprocessing) sums up my thoughts pretty well for why I converted to grayscale.
+
 I then normalized the image data, so that the inputs were all within a comparable range. I believe Stanford's CS231n sums up data pre-processing techniques very well. Check it out [here](https://cs231n.github.io/neural-networks-2/#datapre).
 
 Check out the before and after of my pre-processing below:
 
-Original 
+Original
+
 ![alt text](https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/Original.png "Original")
 
-Normalized + Grayscale 
+Normalized + Grayscale
+
 ![alt text](https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/NormalizedandGray.png "Normalized + Grayscale")
 
 ####2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
@@ -96,41 +103,58 @@ My final model consisted of the following layers:
 
 | Layer         		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Input         		| 32x32x3 RGB image   							| 
-| Convolution 3x3     	| 1x1 stride, same padding, outputs 32x32x64 	|
+| Input         		| 32x32x1 RGB image   							| 
+| Convolution 3x3     	| 1x1 stride, VALID padding, outputs 28x28x6 	|
 | RELU					|												|
-| Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
-| Convolution 3x3	    | etc.      									|
-| Fully connected		| etc.        									|
-| Softmax				| etc.        									|
-|						|												|
-|						|												|
+| Max pooling	      	| 2x2 stride,  outputs 14x14x6 				|
+| Convolution 3x3     	| 1x1 stride, VALID padding, outputs 5x5x16 	|
+| Flatten					| Outputs 400												|
+| Fully connected		| Outputs 120        									|
+| RELU					|												|
+| Fully connected		| Outputs 84        									|
+| RELU					|												|
+| Fully connected		| Outputs 43        									|
  
 
 
 ####3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-To train the model, I used an ....
+To train the model, I used a slightly modified version of the LeNet architecture. You can find the original paper [here](http://yann.lecun.com/exdb/publis/pdf/lecun-01a.pdf). 
+
+The sole modifications were to the batch size and total classes in the final output of the neural network. I decreased the batch size to get allow the neural network to take smaller step sizes during gradient descent. While this slows the learning process due to smaller step sizes, it allowes the network to converge closer to the optimum as you near it.
+
+During my initial training of the neural network, I played around with the batch size, number of epochs, and learning rate quite a bit. I found that the original hyperparamers yielded the best results - with only batch size helping.
 
 ####4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
+Train Set Accuracy = 100%
+Validation Set Accuracy = 96.3%
+Test Set Accuracy = 92.8%
 
 If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen?
+I chose the LeCun Architecture because it was very easy to get up and running. The only changes that needed to be made to the architecture were in the total number of classes output from the final fully connected layer.
 * What were some problems with the initial architecture?
-* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-* Which parameters were tuned? How were they adjusted and why?
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
+The initial architecture perpetually got stuck around 94% validation set accuracy when I first started training the model. 
+* How was the architecture adjusted and why was it adjusted? 
+I began testing out changes to the hypterparameters. This included changing the number of epochs (200, 150, etc.), batch size (64), and learning rate (both higher and lower). While these changes yielded different results, the only one that increased the validition set accuracy was dropping the batch size to 64. See above for why I believe this increased the validation set accuracy.
 
-If a well known architecture was chosen:
-* What architecture was chosen?
-* Why did you believe it would be relevant to the traffic sign application?
+As a side note, increasing the number of epochs did not help push past any local minima that I hit. Also, increasing the learning rate allowed the net to descend faster, but "bounced" around and never got past local minima as well. Lowering the learning rate slowed down the descent time and also got stuck at local minima.
+
+Moving on, I realized part way through my training that I wasn't converting my validation set to grayscale (oops!). This pushed the validation set accuracy to its peak with the LeCun architecture (96.3%).
+
+I never encountered an overfitting or underfitting in my model. For the most part, I consistently got ~94-96% validation set accuracy, which is decent for the base LeCun Architecture.
+
+* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
+A convolution layer has become a staple for any computer vision or object recognition problem. I merely am following and replicating similar results to some of the best research that has been done in the field so far. In fact, my model could be significantly improved upon. More on that later...
+
 * How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
- 
+Train Set Accuracy = 100%
+Validation Set Accuracy = 96.3%
+Test Set Accuracy = 92.8%
+
+The accuracy for each set above indicate that the model is working fairly well - with only ~4% point differences between each set of data. This is fairly standard (based on a quick Google search) and doesn't indicate overfitting. If the results were much farther apart, I would have scrapped the LeCun Architecture for something different.
 
 ###Test a Model on New Images
 
@@ -138,8 +162,8 @@ If a well known architecture was chosen:
 
 Here are five German traffic signs that I found on the web:
 
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
+![alt text](image4) ![alt text](image4) ![alt text](image4)
+![alt text](image4) ![alt text](image4)
 
 The first image might be difficult to classify because ...
 

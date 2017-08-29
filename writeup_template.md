@@ -50,16 +50,17 @@ Number of unique classes/labels = 43
 
 ####2. Include an exploratory visualization of the dataset.
 
-Below is an explaratory visualization of the data set. It is 3 histograms showing the total image count for each class (training, validation, and test are included):
+Below is an explaratory visualization of the data set. It is 3 histograms showing the total image count for each class (training, validation, and test histograms are included):
 
 Training Histogram
-![alt text][image1]
+
+![alt text][https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/Training.png?raw=true]
 
 Vaidation Histogram
-![alt text][image1]
+![alt text][https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/Validation.png?raw=true]
 
 Test Histogram
-![alt text][image1]
+![alt text][https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/Test.png?raw=true]
 
 
 ###Design and Test a Model Architecture

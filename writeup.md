@@ -60,6 +60,8 @@ Test Histogram
 ![alt text](https://github.com/tlapinsk/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_images/Test.png?raw=true "Test Histogram")
 
 Resources for exploratory visualization:
+- [Matplot lib image tutorial](https://matplotlib.org/users/image_tutorial.html)
+- [Matplot lib figure documentation](https://matplotlib.org/api/figure_api.html)
 - [Matplotlib histogram documentation](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.pyplot.hist.html)
 - [More Matplotlib documentation](http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.hist)
 - [Creating a histogram with Seaborn](https://discussions.udacity.com/t/a-bit-of-help-with-matplotlib-please/224701/8?u=tim.lapinskas)

@@ -114,32 +114,32 @@ During my initial training of the neural network, I played around with the batch
 **Solution discussion**
 
 Code that calculated the accuracy of each data set:
-with tf.Session() as sess:
-    sess.run(tf.global_variables_initializer())
-    num_examples = len(X_train)
-    
-    print("Training...")
-    print()
-    for i in range(EPOCHS):
-        X_train, y_train = shuffle(X_train, y_train)
-        X_valid, y_valid = shuffle(X_valid, y_valid)
-        X_test, y_test = shuffle(X_test, y_test)
-        for offset in range(0, num_examples, BATCH_SIZE):
-            end = offset + BATCH_SIZE
-            batch_x, batch_y = X_train[offset:end], y_train[offset:end]
-            sess.run(training_operation, feed_dict={x: batch_x, y: batch_y})
-        
-        train_accuracy = evaluate(X_train, y_train)
-        validation_accuracy = evaluate(X_valid, y_valid)
-        test_accuracy = evaluate(X_test, y_test)
-        print("EPOCH {} ...".format(i+1))
-        print("Train Accuracy = {:.3f}".format(train_accuracy))
-        print("Validation Accuracy = {:.3f}".format(validation_accuracy))
-        print("Test Accuracy = {:.3f}".format(test_accuracy))
-        print()
-        
-    saver.save(sess, './lenet')
-    print("Model saved")
+	with tf.Session() as sess:
+	    sess.run(tf.global_variables_initializer())
+	    num_examples = len(X_train)
+	    
+	    print("Training...")
+	    print()
+	    for i in range(EPOCHS):
+	        X_train, y_train = shuffle(X_train, y_train)
+	        X_valid, y_valid = shuffle(X_valid, y_valid)
+	        X_test, y_test = shuffle(X_test, y_test)
+	        for offset in range(0, num_examples, BATCH_SIZE):
+	            end = offset + BATCH_SIZE
+	            batch_x, batch_y = X_train[offset:end], y_train[offset:end]
+	            sess.run(training_operation, feed_dict={x: batch_x, y: batch_y})
+	        
+	        train_accuracy = evaluate(X_train, y_train)
+	        validation_accuracy = evaluate(X_valid, y_valid)
+	        test_accuracy = evaluate(X_test, y_test)
+	        print("EPOCH {} ...".format(i+1))
+	        print("Train Accuracy = {:.3f}".format(train_accuracy))
+	        print("Validation Accuracy = {:.3f}".format(validation_accuracy))
+	        print("Test Accuracy = {:.3f}".format(test_accuracy))
+	        print()
+	        
+	    saver.save(sess, './lenet')
+	    print("Model saved")
 
 Final results:
 Train Set Accuracy = 100%
